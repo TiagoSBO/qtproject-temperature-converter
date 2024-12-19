@@ -19,6 +19,9 @@ public:
 
 
 private:
+    void CelsiusToFahrenheit();
+    void fahrenheitToCelsius();
+
     Ui::MainWindow *ui;
 };
-#endif // UNITCONVERTER_H
+#endif

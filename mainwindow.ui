@@ -78,7 +78,7 @@
          <item>
           <widget class="QLineEdit" name="setUnit">
            <property name="inputMask">
-            <string/>
+            <string notr="true"/>
            </property>
            <property name="text">
             <string/>
