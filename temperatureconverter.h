@@ -1,5 +1,5 @@
-#ifndef UNITCONVERTER_H
-#define UNITCONVERTER_H
+#ifndef TEMPERATURECONVERTER_H
+#define TEMPERATURECONVERTER_H
 
 #include <QMainWindow>
 
@@ -19,15 +19,10 @@ public:
 
 private slots:
 
-    QString on_chooseUnit_currentIndexChanged(int index);
-    QString on_chooseUnit_2_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;
     void CelsiusToFahrenheit();
     void fahrenheitToCelsius();
-    void configureValidators();
-    void updateSecondComboBox(int index, int index2);
-
 };
 #endif
