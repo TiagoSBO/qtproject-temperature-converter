@@ -1,4 +1,5 @@
 #include "temperatureconverter.h"
+#include <cmath>
 #include "./ui_mainwindow.h"
 #include <QValidator>
 #include <QMessageBox>
@@ -10,24 +11,45 @@ MainWindow::MainWindow(QWidget *parent)
 {
     //Exit Buttom
     ui->setupUi(this);
+
+    ui->resultCelsius->setText("0.0");
+    ui->resultFahrenteit->setText("0.0");
+
     connect(ui->exit, &QAction::triggered, this, &QCoreApplication::quit);
 
+    //DoubleSpinBox
+    ui->inputValue->setMinimum(0);
+    ui->inputValue->setMaximum(999999);
+    ui->inputValue->setDecimals(2);
+    ui->inputValue->clear();
 
-
-    // // Connect the item to the comboBox
-    // connect(ui->chooseUnit, &QComboBox::currentIndexChanged, this, &MainWindow::on_chooseUnit_currentIndexChanged);
-    // // Connect the item2 to the comboBox2
-    // connect(ui->chooseUnit_2, &QComboBox::currentIndexChanged, this, &MainWindow::on_chooseUnit_2_currentIndexChanged);
-
+    connect(ui->inputValue, &QDoubleSpinBox::valueChanged, this, &MainWindow::on_inputValue_valueChanged);
 }
 
 MainWindow::~MainWindow(){ delete ui; }
 
-//Config EditLIne to set Numbers;
-// void MainWindow::configureValidators(){
-//     QDoubleValidator* doublevalidator = new QDoubleValidator(0, 99999, 2, ui->setUnit);
-//     doublevalidator->setNotation(QDoubleValidator::StandardNotation);
-//     ui->setUnit->setValidator(doublevalidator);
-// }
+double MainWindow::celsiusToFahrenheit(double input)
+{
+    return input * 1.8 + 32;
+}
 
+double MainWindow::fahrenheitToCelsius(double input)
+{
+    return (input - 32) / 1.8;
+}
 
+void MainWindow::on_inputValue_valueChanged(double inputValue){
+
+    QString inputText = ui->inputValue->text();
+    if (inputText.isEmpty()){
+        ui->resultCelsius->clear();
+        ui->resultFahrenteit->clear();
+        return;
+    }
+
+    double resultCelsius = round(fahrenheitToCelsius(inputValue));    // Converte Fahrenheit para Celsius
+    double resultFahrenheit = round(celsiusToFahrenheit(inputValue));  // Converte Celsius para Fahrenheit
+    // Atualiza os rótulos com os resultados
+    ui->resultCelsius->setNum(resultCelsius);
+    ui->resultFahrenteit->setNum(resultFahrenheit);
+}

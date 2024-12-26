@@ -2,6 +2,7 @@
 #define TEMPERATURECONVERTER_H
 
 #include <QMainWindow>
+#include <QWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,11 +19,11 @@ public:
     ~MainWindow();
 
 private slots:
-
+    void on_inputValue_valueChanged(double arg1);
 
 private:
     Ui::MainWindow *ui;
-    void CelsiusToFahrenheit();
-    void fahrenheitToCelsius();
+    double celsiusToFahrenheit(double input);
+    double fahrenheitToCelsius(double input);
 };
 #endif
