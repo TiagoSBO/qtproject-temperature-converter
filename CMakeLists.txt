@@ -23,6 +23,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(TemperatureConverter
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        utilsfunctions.h utilsfunctions.cpp
+
+
 
 
     )
