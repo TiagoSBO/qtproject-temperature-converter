@@ -20,11 +20,9 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_inputValue_valueChanged(double arg1);
 
 private:
     Ui::MainWindow *ui;
     void configureInputSpinBox();
-    void resetResultLabels();
 };
 #endif
