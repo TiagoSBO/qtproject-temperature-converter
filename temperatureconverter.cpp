@@ -1,8 +1,8 @@
 #include "temperatureconverter.h"
 #include "./ui_mainwindow.h"
 #include <QDoubleSpinBox>
+#include <QLineEdit>
 // #include "utilsfunctions.h"
-#include <QValidator>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -30,18 +30,25 @@ MainWindow::~MainWindow(){ delete ui; }
 // }
 
 
-void MainWindow::configureSpinBox(QDoubleSpinBox* spinBox) {
+void MainWindow::configureSpinBox(QDoubleSpinBox* spinBox, const QString& suffix) {
     spinBox->setMinimum(0);
     spinBox->setMaximum(999999);
     spinBox->setDecimals(2);
     spinBox->clear();
+
+    QLineEdit* lineEdit = spinBox->findChild<QLineEdit*>();
+    if (lineEdit) {
+        lineEdit->setPlaceholderText("Enter value");
+    }
+    spinBox->setSuffix(suffix);
 }
 
 void MainWindow::configureInputSpinBoxes() {
-    configureSpinBox(ui->spinBoxCelsius);
-    configureSpinBox(ui->spinBoxFahrenheit);
-    configureSpinBox(ui->spinBoxKelvin);
+    configureSpinBox(ui->spinBoxCelsius, " Cº");
+    configureSpinBox(ui->spinBoxFahrenheit, " Fº");
+    configureSpinBox(ui->spinBoxKelvin, " Kº");
 }
+
 
 
 //     QString inputText = ui->inputValue->text();

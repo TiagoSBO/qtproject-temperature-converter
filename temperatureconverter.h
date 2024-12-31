@@ -26,7 +26,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void configureSpinBox(QDoubleSpinBox* spinBox);
+    void configureSpinBox(QDoubleSpinBox* spinBox, const QString& suffix);
     void configureInputSpinBoxes();
 };
 #endif
