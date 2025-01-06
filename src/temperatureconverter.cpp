@@ -37,6 +37,9 @@ void MainWindow::onSpinBoxesValueChanged(){
     }else if (senderSpinBox == ui->spinBoxCelsius) {
         updateSpinBoxes(ui->spinBoxCelsius, ui->spinBoxFahrenheit, celsiusToFahrenheit);
         updateSpinBoxes(ui->spinBoxCelsius, ui->spinBoxKelvin, celsiusToKelvin);
+    }else{
+        updateSpinBoxes(ui->spinBoxKelvin, ui->spinBoxCelsius, kelvinToCelsius);
+        updateSpinBoxes(ui->spinBoxKelvin, ui->spinBoxFahrenheit, kelvinToFahrenheit);
     }
 
 }

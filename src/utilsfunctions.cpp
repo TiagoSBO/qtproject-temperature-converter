@@ -19,3 +19,12 @@ double fahrenheitToKelvin(double fahToKel) {
     return (fahToKel + 459.67) * 5 / 9;
 }
 
+double kelvinToCelsius(double kelToCel)
+{
+    return kelToCel - 273.15;
+}
+
+double kelvinToFahrenheit(double kelToFah)
+{
+    return (kelToFah - 273.15) * 9/5 + 32;
+}
