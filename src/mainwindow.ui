@@ -70,6 +70,9 @@
            <property name="suffix">
             <string/>
            </property>
+           <property name="singleStep">
+            <double>1.000000000000000</double>
+           </property>
           </widget>
          </item>
         </layout>

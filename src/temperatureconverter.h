@@ -21,12 +21,13 @@ public:
 
 private slots:
 
-    // void update_spinBoxes_valueChanged(double arg1, double arg2, double arg3);
+    void onSpinBoxesValueChanged();
 
 private:
     Ui::MainWindow *ui;
 
     void configureSpinBox(QDoubleSpinBox* spinBox, const QString& suffix);
     void configureInputSpinBoxes();
+    void updateSpinBoxes(QDoubleSpinBox* source, QDoubleSpinBox* target, std::function<double(double)> conversionFunc);
 };
 #endif
