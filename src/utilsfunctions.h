@@ -1,6 +1,7 @@
 #ifndef UTILSFUNCTIONS_H
 #define UTILSFUNCTIONS_H
 #include <QDoubleSpinBox>
+
 class utilsfunctions
 {
 public:

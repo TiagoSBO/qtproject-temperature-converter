@@ -1,10 +1,12 @@
 #include "temperatureconverter.h"
 #include "./ui_mainwindow.h"
 #include "utilsfunctions.h"
+#include <QRegularExpression>
 #include <QDoubleSpinBox>
 #include <QLineEdit>
 #include <functional>
 #include <QDebug>
+#include <cmath>
 
 using ConvertFunction = std::function<double(double)>;
 
@@ -21,7 +23,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->spinBoxCelsius, &QDoubleSpinBox::valueChanged, this, &MainWindow::onSpinBoxesValueChanged);
     connect(ui->spinBoxFahrenheit, &QDoubleSpinBox::valueChanged, this, &MainWindow::onSpinBoxesValueChanged);
     connect(ui->spinBoxKelvin, &QDoubleSpinBox::valueChanged, this, &MainWindow::onSpinBoxesValueChanged);
-
 }
 
 MainWindow::~MainWindow(){ delete ui; }
@@ -29,7 +30,6 @@ MainWindow::~MainWindow(){ delete ui; }
 void MainWindow::onSpinBoxesValueChanged(){
 
     QObject* senderSpinBox = sender();
-    QString a = "safasfs";
 
     if (senderSpinBox == ui->spinBoxFahrenheit) {
         updateSpinBoxes(ui->spinBoxFahrenheit, ui->spinBoxCelsius, fahrenheitToCelsius);
@@ -41,23 +41,42 @@ void MainWindow::onSpinBoxesValueChanged(){
         updateSpinBoxes(ui->spinBoxKelvin, ui->spinBoxCelsius, kelvinToCelsius);
         updateSpinBoxes(ui->spinBoxKelvin, ui->spinBoxFahrenheit, kelvinToFahrenheit);
     }
-
 }
 
 void MainWindow::updateSpinBoxes(QDoubleSpinBox* source, QDoubleSpinBox* target, std::function<double(double)> conversionFunc) {
+    target->blockSignals(true);
+
     double result = conversionFunc(source->value());
+
+    //Rounds the result if the checkbox is checked.
+    auto currentstate = ui->checkBox->checkState();
+    if (ui->checkBox->isChecked()){
+        result = std::round(result * 100.0) / 100.0;
+        source->setDecimals(2);
+        target->setDecimals(2);
+    }else {
+        source->setDecimals(4);
+        target->setDecimals(4);
+    }
+
     target->setValue(result);
+    target->blockSignals(false);
 }
 
 void MainWindow::configureSpinBox(QDoubleSpinBox* spinBox, const QString& suffix) {
     spinBox->setMinimum(-99999);
     spinBox->setMaximum(99999);
-    spinBox->setDecimals(2);
+    spinBox->setDecimals(4);
+    spinBox->setKeyboardTracking(false); // Adicionado aqui
     spinBox->clear();
 
     QLineEdit* lineEdit = spinBox->findChild<QLineEdit*>();
     if (lineEdit) {
         lineEdit->setPlaceholderText("Enter value");
+
+        QRegularExpression regExp("[-]?[0-9]*\\.?[0-9]{0,4}");
+        QValidator* validator = new QRegularExpressionValidator(regExp, spinBox);
+        lineEdit->setValidator(validator);
     }
     spinBox->setSuffix(suffix);
 }
@@ -67,6 +86,5 @@ void MainWindow::configureInputSpinBoxes() {
     configureSpinBox(ui->spinBoxFahrenheit, " Fº");
     configureSpinBox(ui->spinBoxKelvin, " Kº");
 }
-
 
 
