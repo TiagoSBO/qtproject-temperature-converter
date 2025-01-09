@@ -16,6 +16,8 @@ This project was developed using the following technologies:
 - [QT Creator](https://www.qt.io/product/development-tools)
 - [C++](https://learn.microsoft.com/pt-br/cpp/windows/latest-supported-vc-redist?view=msvc-170) 
 
+## 📸Screenshot
+![image](https://github.com/user-attachments/assets/b7b69308-2946-4471-848d-7dc8a194b6c6)
 
 ## ⚙Prerequisites
 Before running the project, make sure you have the following installed:
