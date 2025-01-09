@@ -1,10 +1,7 @@
 # Temperature Converter 🌡️
 
-A Qt-based program for converting temperatures between Celsius, Fahrenheit, and Kelvin with an intuitive interface and additional features like optional rounding.
-
-
 ## 📖About the Project
-The Temperature Converter application provides a user-friendly way to perform temperature conversions between the three most common scales:
+A Qt Widgets-based program for converting temperatures. Provides a user-friendly way to perform temperature conversions between the three most common scales:
 
 - Celsius
 - Fahrenheit
