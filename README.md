@@ -2,12 +2,16 @@
 
 A Qt-based program for converting temperatures between Celsius, Fahrenheit, and Kelvin with an intuitive interface and additional features like optional rounding.
 
+
 ## 📖About the Project
 The Temperature Converter application provides a user-friendly way to perform temperature conversions between the three most common scales:
 
 - Celsius
 - Fahrenheit
 - Kelvin
+
+### Important to say
+*This is my first project using a framework for some programming language and mainly implementing a GUI. It is a project entirely focused on the study of QT and C++ itself.*
 
 ## 🚀 Technologies
 This project was developed using the following technologies:
@@ -17,7 +21,7 @@ This project was developed using the following technologies:
 - [C++](https://learn.microsoft.com/pt-br/cpp/windows/latest-supported-vc-redist?view=msvc-170) 
 
 ## 📸Screenshot
-![image](https://github.com/user-attachments/assets/b7b69308-2946-4471-848d-7dc8a194b6c6)
+![401656265-b7b69308-2946-4471-848d-7dc8a194b6c6](https://github.com/user-attachments/assets/717387b5-d95b-458b-aa6b-35f214711213)
 
 ## ⚙Prerequisites
 Before running the project, make sure you have the following installed:
