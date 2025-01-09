@@ -49,7 +49,6 @@ void MainWindow::updateSpinBoxes(QDoubleSpinBox* source, QDoubleSpinBox* target,
     double result = conversionFunc(source->value());
 
     //Rounds the result if the checkbox is checked.
-    auto currentstate = ui->checkBox->checkState();
     if (ui->checkBox->isChecked()){
         result = std::round(result * 100.0) / 100.0;
         source->setDecimals(2);
@@ -67,7 +66,7 @@ void MainWindow::configureSpinBox(QDoubleSpinBox* spinBox, const QString& suffix
     spinBox->setMinimum(-99999);
     spinBox->setMaximum(99999);
     spinBox->setDecimals(4);
-    spinBox->setKeyboardTracking(false); // Adicionado aqui
+    spinBox->setKeyboardTracking(false);
     spinBox->clear();
 
     QLineEdit* lineEdit = spinBox->findChild<QLineEdit*>();
